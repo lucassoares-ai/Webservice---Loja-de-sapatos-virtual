@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Meus Pedidos{% endblock %}
+
+{% block content %}
+<div class="orders-page-main">
+    <div class="orders-container">
+        <h1 class="page-title">📦 Meus Pedidos</h1>
+        <p class="subtitle">Acompanhe o status e o histórico de rastreio das suas compras mais recentes.</p>
+        
+        {% if orders %}
+        <div class="orders-list">
+            {% for order in orders %}
+            <div class="order-card">
+                <div class="order-header">
+                    <span class="order-id">Pedido: <strong>#{{ order.id }}</strong></span>
+                    <span class="order-date">Data: {{ order.date }}</span>
+                </div>
+                
+                <div class="order-details">
+                    <p class="order-items">Itens: **{{ order.item_list | join(', ') }}**</p>
+                    
+                    <span class="order-total">Total: **R$ {{ order.total|round(2) }}**</span>
+                </div>
+                
+                <div class="order-footer">
+                    <span class="order-status status-{{ order.status.lower().replace(' ', '-') }}">
+                        Status: {{ order.status }}
+                    </span>
+                    
+                    <a href="{{ url_for('track', order_id=order.id) }}" class="btn btn-secondary btn-small track-btn">
+                        Ver Rastreio →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <p>Você ainda não fez nenhum pedido conosco. 😔</p>
+            <a href="{{ url_for('collection') }}" class="btn btn-primary">Começar a Comprar</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

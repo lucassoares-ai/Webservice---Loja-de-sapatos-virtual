@@ -1,0 +1,130 @@
+/* --- CARRINHO DE COMPRAS PAGE --- */
+.cart-page-main {
+    padding: 3rem 0;
+    min-height: 70vh;
+}
+
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.cart-summary-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Itens 2/3, Resumo 1/3 */
+    gap: 30px;
+}
+
+.cart-items-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cart-items-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.cart-items-section th {
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--color-light-gray);
+    color: var(--color-text-dark);
+}
+
+.cart-items-section td {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-background);
+    vertical-align: middle;
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.item-title-col a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+.item-title-col a:hover {
+    color: var(--color-accent);
+}
+
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: #D32F2F;
+    cursor: pointer;
+    font-size: 0.85rem;
+    text-decoration: underline;
+}
+
+/* RESUMO DO PEDIDO */
+.order-summary-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    height: fit-content;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.order-summary-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: var(--color-text-medium);
+}
+
+.summary-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px solid var(--color-accent);
+}
+
+.checkout-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Carrinho Vazio */
+.empty-cart {
+    text-align: center;
+    padding: 4rem;
+    border: 1px dashed var(--color-light-gray);
+    border-radius: 6px;
+    margin-top: 3rem;
+}
+
+.empty-cart p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-medium);
+}

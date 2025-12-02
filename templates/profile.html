@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Meu Perfil e Preferências{% endblock %}
+
+{% block content %}
+<div class="profile-page-main">
+    <div class="profile-container">
+        <h1 class="page-title">Bem-vindo(a), {{ user.name.split()[0] }}!</h1>
+        <p class="subtitle">Gerencie suas informações e personalize sua experiência.</p>
+        
+        <div class="profile-dashboard-grid">
+            
+            <section class="info-section">
+                <h2>Informações da Conta</h2>
+                <form class="profile-form" method="POST" action="#">
+                    
+                    <div class="form-group">
+                        <label for="profile-name">Nome Completo</label>
+                        <input type="text" id="profile-name" name="name" value="{{ user.name }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-email">E-mail</label>
+                        <input type="email" id="profile-email" name="email" value="{{ user.email }}" disabled>
+                        <small class="form-hint">E-mail só pode ser alterado via suporte.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-password">Alterar Senha</label>
+                        <input type="password" id="profile-password" name="password" placeholder="Deixe vazio para manter a atual">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary profile-btn">Salvar Informações</button>
+                </form>
+            </section>
+            
+            <section class="preferences-section">
+                <h2>Preferências</h2>
+                <form class="profile-form" method="POST" action="#">
+                    
+                    <div class="form-group">
+                        <label for="default-size">Tamanho Padrão</label>
+                        <select id="default-size" name="size_default">
+                            <option value="">Nenhum</option>
+                            {% for size in ['38', '39', '40', '41', '42', '43'] %}
+                                <option value="{{ size }}" {% if user.preferences.size_default == size %}selected{% endif %}>
+                                    {{ size }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <small class="form-hint">Seu tamanho favorito será pré-selecionado.</small>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter" {% if user.preferences.newsletter %}checked{% endif %}>
+                        <label for="newsletter">Receber Newsletter e Ofertas Exclusivas</label>
+                    </div>
+                    
+                    <div class="form-group radio-group">
+                        <label>Tema da Loja</label>
+                        <div>
+                            <input type="radio" id="theme-light" name="theme" value="claro" {% if user.preferences.theme == 'claro' %}checked{% endif %}>
+                            <label for="theme-light">Claro</label>
+                            
+                            <input type="radio" id="theme-dark" name="theme" value="escuro" {% if user.preferences.theme == 'escuro' %}checked{% endif %}>
+                            <label for="theme-dark">Escuro (Em breve)</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary profile-btn">Salvar Preferências</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+<section class="payment-section">
+    <h2>💳 Formas de Pagamento</h2>
+    
+    {% if user.payment_methods %}
+    <div class="payment-list">
+        {% for card in user.payment_methods %}
+        <div class="card-item {% if card.default %}card-default{% endif %}">
+            <span class="card-brand">{{ card.brand }}</span>
+            <span class="card-number">•••• {{ card.last_four }}</span>
+            <span class="card-expiry">Válido até {{ card.expiry }}</span>
+            <div class="card-actions">
+                {% if card.default %}
+                    <span class="tag-default">Padrão</span>
+                {% else %}
+                    <button class="btn-action">Definir como Padrão</button>
+                {% endif %}
+                <button class="btn-action btn-delete">Excluir</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-payment">Você não possui cartões cadastrados.</p>
+    {% endif %}
+
+    <h3 class="add-card-title">Adicionar Novo Cartão</h3>
+    <form class="profile-form add-card-form" method="POST" action="#">
+        
+        <div class="form-group">
+            <label for="card-number">Número do Cartão</label>
+            <input type="text" id="card-number" name="card_number" placeholder="xxxx xxxx xxxx xxxx" required>
+        </div>
+        
+        <div class="form-group-inline">
+            <div class="form-group">
+                <label for="card-expiry">Validade (MM/AA)</label>
+                <input type="text" id="card-expiry" name="card_expiry" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+                <label for="card-cvv">CVV</label>
+                <input type="text" id="card-cvv" name="card_cvv" placeholder="123" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="card-holder">Nome no Cartão</label>
+            <input type="text" id="card-holder" name="card_holder" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Adicionar Cartão</button>
+    </form>
+</section>
+
+</div> 
+{% endblock %}

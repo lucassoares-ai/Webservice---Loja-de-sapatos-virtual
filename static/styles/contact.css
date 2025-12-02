@@ -1,0 +1,85 @@
+/* --- CONTACT PAGE --- */
+.contact-page-main {
+    padding: 3rem 0;
+    min-height: 70vh;
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Formulário maior que Info */
+    gap: 40px;
+    margin-top: 2rem;
+}
+
+.contact-form-section, .contact-info-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form-section h2, .contact-info-section h2 {
+    font-size: 1.6rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-background);
+    padding-bottom: 5px;
+}
+
+/* Estilo do Formulário */
+.contact-form .form-group label {
+    font-weight: 500;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Estilo da Seção de Informações */
+.info-block {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--color-light-gray);
+}
+
+.info-block h3 {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+.info-detail {
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+}
+
+.info-time {
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+}
+
+/* Mensagens Flash */
+.flash-message {
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}

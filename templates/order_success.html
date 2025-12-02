@@ -1,0 +1,55 @@
+<!-- templates/order_success.html -->
+{% extends "base.html" %}
+
+{% block title %}Pedido Confirmado!{% endblock %}
+
+{% block content %}
+<div class="success-page-main">
+    <div class="success-container">
+        
+        <div class="success-icon-container">
+            <!-- Ícone de Checkmark Grande (SVG Inline para maior estilo) -->
+            <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="M22 4L12 14l-3-3"></path>
+            </svg>
+        </div>
+        
+        <h1 class="page-title-success">🎉 Pedido Realizado com Sucesso!</h1>
+        <p class="subtitle-success">Obrigado pela sua compra. Enviamos um e-mail de confirmação para **{{ user_email }}**.</p>
+        
+        <!-- DETALHES RÁPIDOS DO PEDIDO -->
+        <div class="order-details-box">
+            <div class="detail-line">
+                <span class="detail-label">Número do Pedido:</span>
+                <span class="detail-value order-id-value">#{{ order_id }}</span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">Valor Total Pago:</span>
+                <span class="detail-value total-paid-value">R$ {{ total_paid|round(2) }}</span>
+            </div>
+            <div class="detail-line">
+                <span class="detail-label">Forma de Pagamento:</span>
+                <span class="detail-value">Cartão de Crédito (Simulado)</span>
+            </div>
+        </div>
+
+        <!-- PRÓXIMOS PASSOS -->
+        <div class="next-steps">
+            <h3>Próximos Passos:</h3>
+            <ul>
+                <li>O status do seu pedido será atualizado em até 24 horas.</li>
+                <li>Você pode acompanhar a entrega através do link de rastreio que será enviado.</li>
+                <li>Qualquer dúvida, entre em contato com nosso suporte informando o ID do pedido.</li>
+            </ul>
+        </div>
+        
+        <!-- BOTÕES DE NAVEGAÇÃO -->
+        <div class="success-actions">
+            <a href="{{ url_for('profile') }}" class="btn btn-secondary">Acompanhar Meus Pedidos</a>
+            <a href="{{ url_for('home') }}" class="btn btn-primary">Voltar para a Home</a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

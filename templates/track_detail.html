@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Rastreio do Pedido #{{ order.id }}{% endblock %}
+
+{% block content %}
+<div class="track-page-main">
+    <div class="track-container">
+        <h1 class="page-title">Rastreio do Pedido <span class="order-id-highlight">#{{ order.id }}</span></h1>
+        
+        <div class="track-summary">
+            <p>Status Atual: <span class="current-status status-{{ order.status.lower().replace(' ', '-') }}">{{ order.status }}</span></p>
+            {% if order.tracking_code %}
+            <p>Código de Rastreio: <strong>{{ order.tracking_code }}</strong></p>
+            <p class="external-link">
+                <a href="https://rastreamento.correios.com.br/app/index.php?id={{ order.tracking_code }}" target="_blank">
+                    Acompanhar nos Correios (Simulação)
+                </a>
+            </p>
+            {% endif %}
+        </div>
+        
+        <div class="tracking-timeline">
+            <h2>Histórico de Movimentações</h2>
+            
+            {% for event in order.history | reverse %}
+            <div class="timeline-item {% if loop.first %}timeline-latest{% endif %}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-status">{{ event.status }}</span>
+                    <span class="timeline-time">{{ event.time }}</span>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+        <a href="{{ url_for('orders') }}" class="btn btn-secondary mt-5">← Voltar para Meus Pedidos</a>
+    </div>
+</div>
+{% endblock %}

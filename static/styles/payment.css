@@ -1,0 +1,115 @@
+/* --- SEÇÃO DE PAGAMENTOS NO PERFIL --- */
+/* Estende o layout de grid para acomodar a nova seção abaixo */
+.profile-dashboard-grid {
+    grid-template-columns: 1fr 1fr; /* Mantém as duas colunas laterais */
+}
+
+/* Garante que a seção de pagamento ocupe a largura total */
+.payment-section {
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-background);
+    border-radius: 6px;
+}
+
+.payment-section h2 {
+    font-size: 1.8rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--color-accent);
+    padding-left: 10px;
+}
+
+.add-card-title {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-inline .form-group {
+    flex: 1; /* Garante que os campos de validade e CVV tenham a mesma largura */
+}
+
+/* Estilo para a Lista de Cartões */
+.payment-list {
+    margin-bottom: 2rem;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.card-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px dashed var(--color-background);
+    color: var(--color-text-dark);
+}
+
+.card-item:last-child {
+    border-bottom: none;
+}
+
+.card-brand {
+    font-weight: 700;
+    width: 100px; /* Largura fixa para logo */
+}
+
+.card-number {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.card-expiry {
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+    margin-right: 20px;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tag-default {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.btn-action {
+    background: none;
+    border: 1px solid var(--color-light-gray);
+    color: var(--color-text-medium);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+    background-color: var(--color-background);
+}
+
+.btn-delete {
+    border-color: #D32F2F;
+    color: #D32F2F;
+}
+
+.btn-delete:hover {
+    background-color: #ffeaea;
+}

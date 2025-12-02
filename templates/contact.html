@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Contato e Suporte{% endblock %}
+
+{% block content %}
+<div class="contact-page-main">
+    <div class="contact-container">
+        <h1 class="page-title">Fale Conosco</h1>
+        <p class="subtitle">Estamos aqui para ajudar! Escolha a melhor forma de contato abaixo.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="contact-grid">
+            
+            <section class="contact-form-section">
+                <h2>Envie sua Mensagem 📧</h2>
+                <form class="contact-form" method="POST" action="{{ url_for('contact') }}">
+                    
+                    <div class="form-group">
+                        <label for="name">Seu Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Seu E-mail:</label>
+                        <input type="email" id="email" name="email" required 
+                               value="{% if session.get('user_email') %}{{ session.get('user_email') }}{% endif %}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto:</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="pedido">Dúvida sobre um Pedido</option>
+                            <option value="troca">Trocas e Devoluções</option>
+                            <option value="produto">Informação sobre Produto</option>
+                            <option value="geral">Outros Assuntos</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </section>
+
+            <section class="contact-info-section">
+                <h2>Informações de Suporte 📞</h2>
+
+                <div class="info-block">
+                    <h3>Atendimento por Telefone</h3>
+                    <p>Entre em contato com nossa central de atendimento:</p>
+                    <p class="info-detail"><strong>(11) 98765-4321</strong></p>
+                    <p class="info-time">Segunda a Sexta, das 9h às 18h.</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>FAQ e Autoatendimento</h3>
+                    <p>Acesse nossa seção de perguntas frequentes para respostas rápidas:</p>
+                    <a href="#" class="btn btn-secondary btn-small mt-2">Acessar FAQ</a>
+                </div>
+
+                <div class="info-block">
+                    <h3>Endereço</h3>
+                    <p>Visite-nos em nosso showroom:</p>
+                    <p class="info-detail">Rua do Comércio, 100 - Centro<br>São Paulo, SP</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

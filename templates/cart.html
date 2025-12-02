@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Seu Carrinho de Compras{% endblock %}
+
+{% block content %}
+<div class="cart-page-main">
+    <div class="cart-container">
+        <h1 class="page-title">Seu Carrinho de Compras</h1>
+
+        {% if cart_items %}
+        <div class="cart-summary-grid">
+            
+            <section class="cart-items-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Produto</th>
+                            <th>Tamanho</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário</th>
+                            <th>Total</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td class="item-image-col">
+                                <img src="https://via.placeholder.com/60x60/D3D3D3/FFFFFF?text=Sapato" alt="Imagem do produto" class="cart-item-image">
+                            </td>
+                            <td class="item-title-col">
+                                <a href="{{ url_for('product_detail', product_id=item.id) }}">{{ item.title }}</a>
+                            </td>
+                            <td>{{ item.size }}</td>
+                            <td>
+                                <input type="number" value="{{ item.quantity }}" min="1" class="quantity-input">
+                            </td>
+                            <td>{{ item.price }}</td>
+                            <td class="item-subtotal">R$ {{ (item.price.replace('R$', '').replace(',', '.') | float * item.quantity)|round(2) }}</td>
+                            <td>
+                                <button class="btn-remove">Remover</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="cart-actions-footer">
+                    <a href="{{ url_for('collection') }}" class="btn btn-secondary">← Continuar Comprando</a>
+                </div>
+            </section>
+
+            <section class="order-summary-section">
+                <h2>Resumo do Pedido</h2>
+                <div class="summary-line">
+                    <span>Subtotal ({{ cart_items|length }} itens):</span>
+                    <span class="value">R$ {{ subtotal|round(2) }}</span>
+                </div>
+                <div class="summary-line">
+                    <span>Frete:</span>
+                    <span class="value">R$ {{ shipping_cost|round(2) }}</span>
+                </div>
+                
+                <div class="summary-line summary-total">
+                    <span>Total:</span>
+                    <span class="value">R$ {{ total|round(2) }}</span>
+                </div>
+
+                <a href="{{ url_for('checkout') }}" class="btn btn-primary checkout-btn">Finalizar Compra →</a>
+            </section>
+        </div>
+        
+        {% else %}
+        <div class="empty-cart">
+            <p>Seu carrinho está vazio.</p>
+            <a href="{{ url_for('collection') }}" class="btn btn-primary">Ver Coleção</a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

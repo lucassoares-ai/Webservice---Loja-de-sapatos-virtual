@@ -1,0 +1,99 @@
+/* --- AUTENTICAÇÃO (LOGIN/CADASTRO) PAGE --- */
+.auth-page-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Garante que o conteúdo fique centralizado na tela */
+    padding: 2rem 1rem;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px; /* Largura padrão para formulários */
+    padding: 2.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth-title {
+    font-size: 2rem;
+    color: var(--color-text-dark);
+    margin-bottom: 2rem;
+}
+
+.auth-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-dark);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+}
+
+.auth-link-footer {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-medium);
+}
+
+.link-accent {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-accent:hover {
+    text-decoration: underline;
+}
+
+/* Para destacar o ícone de usuário quando na página de login/cadastro */
+.active-icon {
+    color: var(--color-accent) !important;
+}
+
+/* Botão destinado ao logout */
+
+/* --- ESTILO PARA O BOTÃO SAIR (NOVO) --- */
+.btn-logout {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-light-gray);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: var(--color-background);
+    border-color: #D32F2F; /* Vermelho sutil para indicar saída/ação de risco */
+    color: #D32F2F;
+}

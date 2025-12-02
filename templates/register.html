@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - SHOES LUXE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/autentication.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">SHOES LUXE</div>
+        <nav class="nav">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('collection') }}" class="nav-link">Coleção</a>
+            <a href="#" class="nav-link">Novidades</a>
+            <a href="#" class="nav-link">Contato</a>
+        </nav>
+        <form class="search-bar" action="{{ url_for('search') }}" method="get">
+            <input type="text" name="q" placeholder="Buscar por sapatos, cores..." class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+        <div class="icons">
+            <a href="{{ url_for('login') }}" class="icon-btn active-icon">👤</a> 
+            <button class="icon-btn">🛒</button> 
+        </div>
+    </header>
+
+    <main class="auth-page-main">
+        <div class="auth-container">
+            <h1 class="auth-title">Crie sua Conta</h1>
+            
+            <form class="auth-form" method="POST" action="{{ url_for('register') }}">
+                
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Criar Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary auth-btn">Cadastrar</button>
+            </form>
+            
+            <p class="auth-link-footer">
+                Já tem uma conta? <a href="{{ url_for('login') }}" class="link-accent">Faça Login</a>
+            </p>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2024 SHOES LUXE. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

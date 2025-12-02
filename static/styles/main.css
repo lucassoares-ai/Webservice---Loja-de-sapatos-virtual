@@ -1,0 +1,285 @@
+/* static/styles/main.css */
+
+/* --- VARIÁVEIS DE CORES --- */
+:root {
+    --color-background: #F5F5F5; /* Off-White Suave */
+    --color-text-dark: #333333; /* Cinza Escuro */
+    --color-text-medium: #8D8D8D; /* Cinza Médio Neutro */
+    --color-accent: #4A6D60; /* Verde Esmeralda Sutil - Sofisticado */
+    --color-light-gray: #CCCCCC;
+}
+
+/* --- ESTILOS GERAIS E TIPOGRAFIA --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* --- CABEÇALHO (HEADER) --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background-color: white; /* Contraste Limpo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--color-text-medium);
+    margin: 0 1rem;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav a:hover, .nav-link.active {
+    color: var(--color-accent);
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    color: var(--color-text-dark);
+    transition: color 0.3s;
+}
+
+.icon-btn:hover {
+    color: var(--color-accent);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 70vh; /* Altura de impacto */
+    background: url('https://via.placeholder.com/1600x800/8D8D8D/FFFFFF?text=Imagem+de+Sapato+de+Luxo') center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    max-width: 450px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fundo sutil para o texto */
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* --- BOTÃO (BTN) --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+    border: 2px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+    background-color: #3C5A50; /* Tom mais escuro do accent */
+    border-color: #3C5A50;
+}
+
+/* --- SEÇÃO DE DESTAQUES (FEATURES) --- */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem 3rem;
+    background-color: white; /* Contraste com o background principal */
+}
+
+.feature-item {
+    text-align: center;
+    max-width: 300px;
+    padding: 1rem;
+}
+
+.feature-item h3 {
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.feature-item p {
+    color: var(--color-text-medium);
+}
+
+/* --- RODAPÉ (FOOTER) --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--color-light-gray);
+    color: var(--color-text-medium);
+    font-size: 0.8rem;
+}
+
+/* ... (Seu CSS anterior para Variáveis, Gerais, Header, Hero, Features) ... */
+
+/* --- BARRA DE PESQUISA (Seção 1.B) --- */
+
+/* --- BARRA DE PESQUISA --- */
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 35px;
+    width: 250px; /* Largura moderada */
+}
+
+.search-input {
+    border: none;
+    padding: 0.5rem 0.75rem;
+    flex-grow: 1;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: var(--color-text-dark);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-medium);
+    opacity: 0.7;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-btn {
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    height: 100%;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.search-btn:hover {
+    background-color: #3C5A50; /* Tom mais escuro */
+}
+
+/* Ajuste no layout do header para acomodar a barra */
+.header {
+    /* Ajuste o 'gap' ou a distribuição se necessário, garantindo espaço */
+    gap: 20px; 
+}
+/* --- SEÇÃO DE PRODUTOS EM DESTAQUE (Atualizações) --- */
+.product-showcase {
+    padding: 4rem 3rem;
+    text-align: center;
+}
+
+.product-showcase h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-text-dark);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 3rem;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 6px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modificação para suportar background-image dinâmico */
+.product-image {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-light-gray);
+    /* Adicione um background padrão para caso a URL falhe */
+    background-color: var(--color-background); 
+}
+
+.product-title {
+    font-size: 1.25rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.25rem; /* Reduzido para encaixar a descrição */
+}
+
+/* NOVO: Estilo para a descrição do produto */
+.product-description {
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+    margin-bottom: 0.75rem;
+    padding: 0 1rem;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* ... (Seu CSS anterior para botões e rodapé) ... */

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.title }} - Detalhes do Produto</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/product_detail.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">SHOES LUXE</div>
+        <nav class="nav">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Coleção</a>
+            <a href="#" class="nav-link">Novidades</a>
+            <a href="#" class="nav-link">Contato</a>
+        </nav>
+        <form class="search-bar" action="{{ url_for('search') }}" method="get">
+            <input type="text" name="q" placeholder="Buscar por sapatos, cores..." class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+        <div class="icons">
+            <button class="icon-btn">👤</button> 
+            <button class="icon-btn">🛒</button> 
+        </div>
+    </header>
+
+    <main class="product-page-main">
+        <section class="product-detail-container">
+            
+            <div class="product-gallery">
+                <img src="{{ product.image_url }}" alt="Imagem principal do {{ product.title }}" class="main-image">
+                
+                {% if product.gallery %}
+                <div class="thumbnails">
+                    {% for img_url in product.gallery %}
+                        <img src="{{ img_url }}" alt="Miniatura do {{ product.title }}" class="thumbnail">
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="product-info">
+                <h1 class="product-title-detail">{{ product.title }}</h1>
+                <p class="product-price-detail">{{ product.price }}</p>
+                
+                <div class="short-description">
+                    <p>{{ product.description }}</p>
+                </div>
+
+                <form class="purchase-form" method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+    
+                    {% if product.sizes is defined %}
+                    <div class="option-group size-options">
+                        <label for="size-select">Tamanho:</label>
+                        <select id="size-select" name="size" required>
+                            <option value="">Selecione</option>
+                            {% for size in product.sizes %}
+                                <option value="{{ size }}">{{ size }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+
+                    <div class="option-group quantity-options">
+                        <label for="quantity-select">Quantidade:</label>
+                        <input type="number" id="quantity-select" name="quantity" value="1" min="1" max="10" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary add-to-cart-btn">Adicionar ao Carrinho 🛒</button>
+                </form>
+
+                <div class="full-description">
+                    <h3>Descrição Completa</h3>
+                    <p>{{ product.full_description or 'Descrição detalhada não disponível para este produto.' }}</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2024 SHOES LUXE. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

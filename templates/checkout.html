@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Finalizar Compra{% endblock %}
+
+{% block content %}
+<div class="checkout-page-main">
+    <div class="checkout-container">
+        <h1 class="page-title">Finalizar Compra</h1>
+
+        <div class="checkout-grid">
+            
+            <section class="checkout-steps">
+                
+                <div class="checkout-step" id="step-delivery">
+                    <h2>1. Endereço de Entrega</h2>
+                    <div class="address-list">
+                        {% for address in user.addresses %}
+                        <label class="address-card {% if address.default %}default-address{% endif %}">
+                            <input type="radio" name="delivery_address" value="{{ address.id }}" {% if address.default %}checked{% endif %} required>
+                            <span class="address-label">{{ address.label }}</span>
+                            <p class="address-details">{{ address.street }} - {{ address.city }} / {{ address.zip }}</p>
+                            {% if address.default %}
+                                <span class="tag-default">Padrão</span>
+                            {% endif %}
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-small mt-3">Adicionar Novo Endereço</button>
+                </div>
+                
+                <hr>
+
+                <div class="checkout-step" id="step-payment">
+                    <h2>2. Forma de Pagamento</h2>
+                    <div class="payment-selection-method">
+                        
+                        <div class="saved-cards">
+                            {% for card in user.payment_methods %}
+                            <label class="payment-option-card {% if card.default %}default-payment{% endif %}">
+                                <input type="radio" name="payment_method" value="card_{{ card.id }}" {% if card.default %}checked{% endif %} required>
+                                <span>{{ card.brand }} que termina em **{{ card.last_four }}**</span>
+                                {% if card.default %}
+                                    <span class="tag-default">Padrão</span>
+                                {% endif %}
+                            </label>
+                            {% endfor %}
+                        </div>
+
+                        <label class="payment-option-card new-card-option">
+                            <input type="radio" name="payment_method" value="new_card" required>
+                            <span>Novo Cartão de Crédito/Débito</span>
+                        </label>
+                        
+                        <div class="new-card-form hidden">
+                            <div class="form-group"><input type="text" placeholder="Nome no Cartão" required></div>
+                            <div class="form-group"><input type="text" placeholder="Número do Cartão" required></div>
+                        </div>
+
+                        <label class="payment-option-card">
+                            <input type="radio" name="payment_method" value="pix" required>
+                            <span>Pix (Pagamento instantâneo)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <hr>
+                
+                <div class="checkout-step" id="step-review">
+                    <h2>3. Revisão Final e Confirmação</h2>
+                    <p class="review-text">Ao clicar em "Pagar Agora", você confirma que todas as informações acima (Endereço e Pagamento) estão corretas.</p>
+                    
+                    <a href="{{ url_for('simulate_payment') }}" class="btn btn-primary btn-lg checkout-pay-btn">
+                        Pagar Agora (R$ {{ total|round(2) }})
+                    </a>
+                </div>
+                
+            </section>
+            
+            <section class="order-summary-fixed">
+                <h2>📦 Seu Pedido</h2>
+                
+                <div class="summary-items">
+                    {% for item in cart_items %}
+                    <div class="summary-item">
+                        <span class="item-name">{{ item.title }} ({{ item.size }})</span>
+                        <span class="item-qty">x{{ item.quantity }}</span>
+                        <span class="item-price">R$ {{ (item.price.replace('R$', '').replace(',', '.') | float * item.quantity)|round(2) }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="summary-line-total">
+                    <span>Subtotal:</span>
+                    <span class="value">R$ {{ subtotal|round(2) }}</span>
+                </div>
+                <div class="summary-line-total">
+                    <span>Frete:</span>
+                    <span class="value">R$ {{ shipping_cost|round(2) }}</span>
+                </div>
+                
+                <div class="summary-line-final">
+                    <strong>Total a Pagar:</strong>
+                    <strong class="total-value">R$ {{ total|round(2) }}</strong>
+                </div>
+                
+                <a href="{{ url_for('cart') }}" class="back-to-cart-link">← Voltar e Editar Carrinho</a>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

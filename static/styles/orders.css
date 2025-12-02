@@ -1,0 +1,152 @@
+/* --- ORDERS LIST & TRACKING PAGES --- */
+.orders-page-main, .track-page-main {
+    padding: 3rem 0;
+    min-height: 70vh;
+}
+
+.orders-container, .track-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* LISTAGEM DE PEDIDOS */
+.orders-list {
+    display: grid;
+    gap: 20px;
+}
+
+.order-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--color-light-gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-background);
+}
+
+.order-id, .order-date {
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+}
+
+.order-details {
+    margin-bottom: 15px;
+}
+
+.order-items {
+    font-weight: 500;
+    color: var(--color-text-dark);
+    margin-bottom: 5px;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Status Colors (Cores baseadas no status) */
+.status-entregue { background-color: #4CAF50; } /* Verde */
+.status-em-transporte { background-color: #FFA000; } /* Laranja */
+.status-preparando-para-envio { background-color: #1976D2; } /* Azul */
+/* Adicione mais status conforme necessário */
+
+
+/* DETALHE DO RASTREIO */
+.order-id-highlight {
+    color: var(--color-accent);
+}
+
+.track-summary {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.current-status {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.external-link a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+.tracking-timeline {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.tracking-timeline h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tracking-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--color-light-gray);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 25px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -8px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-text-medium);
+    border: 3px solid white;
+    z-index: 10;
+}
+
+.timeline-latest .timeline-dot {
+    background-color: var(--color-accent);
+    border: 3px solid #ffedb5;
+}
+
+.timeline-content {
+    margin-left: 20px;
+}
+
+.timeline-status {
+    display: block;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.timeline-time {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-medium);
+    margin-top: 3px;
+}
