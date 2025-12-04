@@ -22,8 +22,8 @@ PRODUCTS = [
             {"name": "Caramelo", "hex": "#D2B48C"}
         ],
         "gallery": [
-            "https://via.placeholder.com/150x150/8D8D8D/FFFFFF?text=Lateral",
-            "https://via.placeholder.com/150x150/AAAAAA/FFFFFF?text=Frente",
+            "http://127.0.0.1:5000/static/img/produtos/sapato_1.png",
+            "http://127.0.0.1:5000/static/img/produtos/sapato_1.png",
             "https://via.placeholder.com/150x150/CCCCCC/FFFFFF?text=Sola"
         ]
     },
