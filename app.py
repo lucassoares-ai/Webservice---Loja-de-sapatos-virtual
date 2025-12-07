@@ -247,7 +247,7 @@ class ProductRepository:
                 title="Oxford Clássico Grey",
                 price="R$ 499,90",
                 description="Sapato social masculino em couro cinza. Elegância e conforto em um design atemporal.",
-                image_url="https://via.placeholder.com/600x600/8D8D8D/FFFFFF?text=Oxford+Grey+Principal",
+                image_url="http://127.0.0.1:5000/static/img/produtos/sapato1foto1.png",
                 full_description="O Oxford Clássico Grey é feito à mão com couro italiano premium. Sua sola de borracha injetada garante o conforto, enquanto o design minimalista confere um toque de sofisticação atemporal. Perfeito para o escritório ou eventos formais. Cuidado: Limpar apenas com pano úmido.",
                 sizes=["38", "39", "40", "41", "42", "43"],
                 colors=[
@@ -256,9 +256,9 @@ class ProductRepository:
                     {"name": "Caramelo", "hex": "#D2B48C"}
                 ],
                 gallery=[
-                    "http://127.0.0.1:5000/static/img/produtos/sapato_1.png",
-                    "http://127.0.0.1:5000/static/img/produtos/sapato_1.png",
-                    "https://via.placeholder.com/150x150/CCCCCC/FFFFFF?text=Sola"
+                    "http://127.0.0.1:5000/static/img/produtos/sapato1foto2.png",
+                    "http://127.0.0.1:5000/static/img/produtos/sapato1foto3.png",
+                    "http://127.0.0.1:5000/static/img/produtos/sapato1foto4.png"
                 ]
             ),
             ProductModel(
@@ -266,7 +266,7 @@ class ProductRepository:
                 title="Bota Elegance Esmeralda",
                 price="R$ 679,00",
                 description="Bota feminina de salto alto na cor esmeralda.",
-                image_url="https://via.placeholder.com/600x600/4A6D60/FFFFFF?text=Bota+Esmeralda+Principal"
+                image_url="http://127.0.0.1:5000/static/img/produtos/sapato2foto1.png"
             )
         ]
     
