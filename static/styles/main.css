@@ -78,7 +78,7 @@ h1, h2, h3 {
 /* --- HERO SECTION --- */
 .hero {
     height: 70vh; /* Altura de impacto */
-    background: url('https://via.placeholder.com/1600x800/8D8D8D/FFFFFF?text=Imagem+de+Sapato+de+Luxo') center center / cover no-repeat;
+    background: url('../img/banner_hero.jpg') center center / cover no-repeat;
     display: flex;
     align-items: center;
     padding: 0 3rem;
