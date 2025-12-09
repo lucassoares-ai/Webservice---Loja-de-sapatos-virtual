@@ -77,7 +77,7 @@ class Produto:
         """
         return {
             "id": self._id,
-            "title": self._titulo,      # O template HTML usa 'title', então mantive assim
+            "title": self._titulo,    
             "price": self._preco,
             "description": self._descricao,
             "image_url": self._url_imagem,
