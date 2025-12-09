@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Coleção Completa - SHOES LUXE{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/collection.css') }}">
+
+<main class="collection-page-main">
+    <h1 class="page-title">Nossa Coleção Exclusiva</h1>
+
+    <div class="collection-container">
+
+        <aside class="sidebar-filters">
+            <h2>Filtrar</h2>
+
+            <div class="filter-group">
+                <h3>Categoria</h3>
+                <ul class="filter-list">
+                    {% for category in categories %}
+                    <li>
+                        <a href="{{ url_for('collection', category=category) }}"
+                            class="filter-link {% if category.lower() == selected_category.lower() %}active{% endif %}">
+                            {{ category }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>Preço</h3>
+                <p class="filter-placeholder">Em breve: Slider de preço.</p>
+            </div>
+
+        </aside>
+
+        <section class="collection-grid-area">
+            <p class="result-count">Exibindo {{ products|length }} produtos.</p>
+
+            <div class="product-grid collection-grid">
+                {% for product in products %}
+                <div class="product-card">
+                    <a href="{{ url_for('product_detail', product_id=product.id) }}" class="card-link">
+                        <div class="product-image"
+                            style="background-image: url('{{ product.image_url|replace('600x600', '280x250') }}');">
+                        </div>
+                    </a>
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <p class="product-description">{{ product.description }}</p>
+                    <p class="product-price">{{ product.price }}</p>
+                    <a href="{{ url_for('product_detail', product_id=product.id) }}"
+                        class="btn btn-secondary">Detalhes</a>
+                </div>
+                {% else %}
+                <p class="no-results">Nenhum produto encontrado na categoria "{{ selected_category }}".</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}

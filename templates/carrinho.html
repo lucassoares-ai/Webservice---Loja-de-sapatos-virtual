@@ -38,7 +38,7 @@
                             <td>{{ item.price }}</td>
                             <td class="item-subtotal">R$ {{ (item.price.replace('R$', '').replace(',', '.') | float * item.quantity)|round(2) }}</td>
                             <td>
-                                <button class="btn-remove">Remover</button>
+                                <button class="btn-remove" data-product-id="{{ item.id }}" data-size="{{ item.size }}">Remover</button>
                             </td>
                         </tr>
                         {% endfor %}
@@ -78,4 +78,28 @@
 
     </div>
 </div>
+
+<script>
+// Funcionalidade de remover item do carrinho
+document.addEventListener('DOMContentLoaded', function() {
+    const removeButtons = document.querySelectorAll('.btn-remove');
+    
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            const size = this.getAttribute('data-size');
+            
+            if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
+                // Criar formulário para enviar POST
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/remove_from_cart/${productId}/${size}`;
+                
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,34 +19,39 @@
 
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="header">
         <div class="logo">SHOES LUXE</div>
         <nav class="nav">
-            <a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
-            <a href="{{ url_for('collection') }}" class="nav-link {% if request.endpoint == 'collection' %}active{% endif %}">Coleção</a>
-            <a href="/contact" class="nav-link">Contato</a>
-            <a href="/orders" class="nav-link">Pedidos</a>
+            <a href="{{ url_for('home') }}"
+                class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+            <a href="{{ url_for('collection') }}"
+                class="nav-link {% if request.endpoint == 'collection' %}active{% endif %}">Coleção</a>
+            <a href="{{ url_for('contact') }}" class="nav-link">Contato</a>
+            <a href="{{ url_for('orders') }}" class="nav-link">Pedidos</a>
 
         </nav>
-        
+
         <form class="search-bar" action="{{ url_for('search') }}" method="get">
             <input type="text" name="q" placeholder="Buscar por sapatos, cores..." class="search-input">
             <button type="submit" class="search-btn">🔍</button>
         </form>
 
         <div class="icons header-actions">
-            
+
             {% if session.get('logged_in') %}
-                <a href="{{ url_for('profile') }}" class="icon-btn profile-icon" title="Meu Perfil">👤</a> 
-                <a href="{{ url_for('logout') }}" class="btn btn-header btn-logout">Sair</a>
+            <a href="{{ url_for('profile') }}" class="icon-btn profile-icon" title="Meu Perfil">👤</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-header btn-logout">Sair</a>
             {% else %}
-                <a href="{{ url_for('login') }}" class="btn btn-header btn-login">Login</a>
-                <a href="{{ url_for('register') }}" class="btn btn-header btn-register">Cadastre-se</a>
+            <a href="{{ url_for('login') }}" class="btn btn-header btn-login">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-header btn-register">Cadastre-se</a>
             {% endif %}
-            
+
             <a href="{{ url_for('cart') }}" class="icon-btn" title="Carrinho de Compras">🛒</a>
         </div>
     </header>
@@ -53,9 +59,10 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-    
+
     <footer class="footer">
         <p>&copy; 2024 SHOES LUXE. Todos os direitos reservados.</p>
     </footer>
 </body>
+
 </html>
